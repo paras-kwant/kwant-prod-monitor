@@ -36,3 +36,12 @@ jobs:
           APP_PROJECT_ID: ${{ secrets.APP_PROJECT_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: node kwant-monitor.js
+
+      - name: Keep repo active
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          echo "Last run: $(date -u)" > last_run.txt
+          git add last_run.txt
+          git diff --staged --quiet || git commit -m "chore: monitor heartbeat $(date -u +'%Y-%m-%d %H:%M')"
+          git push
