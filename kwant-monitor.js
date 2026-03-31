@@ -153,7 +153,7 @@ async function getApiKey(authToken, responseTimes) {
 async function fetchWorkers(authToken, apiKey, responseTimes) {
   log("info", "Fetching project task trades...");
   const start = Date.now();
-  const res = await fetch(`${BASE_URL}/api/projectTaskTrade/filter?sort=name,asc&page=0&size=100`, {
+  const res = await fetch(`${BASE_URL}/api/projectTaskTradeTTT/filter?sort=name,asc&page=0&size=100`, {
     method: "POST",
     headers: {
       "x-auth-token": authToken,
